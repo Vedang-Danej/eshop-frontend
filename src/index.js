@@ -6,6 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { cartReducer } from './store/reducers/cartReducers';
+import axios from 'axios';
 import {
   productListReducer,
   productDetailsReducer,
@@ -32,6 +33,17 @@ import {
   orderListReducer,
   orderPayReducer,
 } from './store/reducers/orderReducers';
+
+const baseURL = 'https://eshop-api.fly.dev';
+axios.interceptors.request.use(
+  (config) => {
+    config.url = baseURL + config.url;
+    return config;
+  },
+  (error) => {
+    console.log(error);
+  }
+);
 
 // redux
 import { configureStore } from '@reduxjs/toolkit';
