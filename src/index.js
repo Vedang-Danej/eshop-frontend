@@ -34,6 +34,11 @@ import {
   orderPayReducer,
 } from './store/reducers/orderReducers';
 
+// redux
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+
 const baseURL = 'https://eshop-api.fly.dev';
 axios.interceptors.request.use(
   (config) => {
@@ -44,11 +49,6 @@ axios.interceptors.request.use(
     console.log(error);
   }
 );
-
-// redux
-import { configureStore } from '@reduxjs/toolkit';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
 
 const cartItemsFromStorage = localStorage.getItem('cart')
   ? JSON.parse(localStorage.getItem('cart'))
